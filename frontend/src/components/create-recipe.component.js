@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class CreateRecipe extends Component {
     constructor(props) {
@@ -86,6 +87,20 @@ export default class CreateRecipe extends Component {
         console.log(`recipe_images : ${this.state.recipe_images}`);
         console.log(`recipe_videoLink : ${this.state.recipe_videoLink}`);
         console.log(`recipe_role : ${this.state.recipe_role}`);
+
+        const newRecipe = {
+            recipe_dateAdded: this.state.recipe_dateAdded,
+            recipe_name: this.state.recipe_name,
+            recipe_description: this.state.recipe_description,
+            recipe_category: this.state.recipe_category,
+            recipe_ingredients: this.state.recipe_ingredients,
+            recipe_images: this.state.recipe_images,
+            recipe_videoLink: this.state.recipe_videoLink,
+            recipe_role: this.state.recipe_role
+        };
+
+        axios.post('http://localhost:4000/recipes/add', newRecipe)
+            .then(res => console.log(res.data));
 
         this.setState({
             recipe_dateAdded: '',
