@@ -2,9 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Recipe = new Schema({
-    recipe_dateAdded: {
-        type: String
-    },
     recipe_name: {
         type: String
     },
@@ -20,13 +17,14 @@ let Recipe = new Schema({
     recipe_images: {
         type: String
     },
-    recipe_videoLink: {
+    recipe_videos: {
         type: String
     },
     recipe_role: {
         type: String
     }
-
+}, {
+    collection: 'recipes'
 });
 
 module.exports = mongoose.model('Recipe', Recipe);
